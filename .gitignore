@@ -74,3 +74,10 @@ typings/
 
 # FuseBox cache
 .fusebox/
+
+^interactive\.text\.Rproj$
+^\.Rproj\.user$
+
+.Rproj
+.Rproj.user
+
