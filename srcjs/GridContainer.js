@@ -6,6 +6,12 @@ import Grid from '@mui/material/Grid';
 
 import './GridContainer.css';
 
+import { TextArea } from "./TextArea.jsx";
+import { Codes } from "./Codes.jsx";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { Lines } from "./Lines.jsx";
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -20,15 +26,23 @@ function FullWidthGrid(props) {
   console.log('Section File Body:' + props.sectionFile)
 
   return (
-    <div className='draganddrop__container'>
-      <div className='draganddrop__container_left_side'>
-        <div className='textContainer'></div>
+    <DndProvider backend={HTML5Backend}>
+      <div className='draganddrop__container'>
+        <div className='draganddrop__container_left_side'>
+          <div className='textContainer'>
+            <TextArea/>
+          </div>
+        </div>
+        <div className = 'draganddrop__container_right_side'>
+          <div className='topCard'>
+            <Codes/>
+          </div>
+          <div className='bottomCard'>
+            <Lines/>
+          </div>
+        </div>
       </div>
-      <div className = 'draganddrop__container_right_side'>
-        <div className='topCard'></div>
-        <div className='bottomCard'></div>
-      </div>
-    </div>
+    </DndProvider>
   );
 }
 
