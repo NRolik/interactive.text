@@ -1,0 +1,24 @@
+.draganddrop__container {
+    width: -webkit-fill-available;
+    display: flex;
+}
+
+.draganddrop__container_left_side {
+    width: 70%;
+    padding: 25px 20px;
+}
+
+.draganddrop__container_right_side {
+    width: 30%;
+}
+
+.topCard {
+    height: 50%;
+    padding: 25px 20px;
+}
+
+.bottomCard {
+    height: 50%;
+    padding: 25px 20px;
+}
+
