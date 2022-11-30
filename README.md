@@ -24,3 +24,4 @@ withr::with_dir(
 4) .rs.restartR() # restart R session
 ```
 
+devtools::check(); devtools::document(); devtools::load_all()
