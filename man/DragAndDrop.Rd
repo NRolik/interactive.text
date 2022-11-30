@@ -6,6 +6,7 @@
 \usage{
 DragAndDrop(
   ...,
+  textFile = NULL,
   codeFile = NULL,
   sectionFile = NULL,
   width = "100\%",
