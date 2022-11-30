@@ -24,21 +24,22 @@ function FullWidthGrid(props) {
 
   console.log('Code File Body:' + props.codeFile)
   console.log('Section File Body:' + props.sectionFile)
+  console.log('Text File Body : ' + props.textFile)
 
   return (
     <DndProvider backend={HTML5Backend}>
       <div className='draganddrop__container'>
         <div className='draganddrop__container_left_side'>
           <div className='textContainer'>
-            <TextArea/>
+            <TextArea text={props.textFile}/>
           </div>
         </div>
         <div className = 'draganddrop__container_right_side'>
           <div className='topCard'>
-            <Codes/>
+            <Codes codeText={props.codeFile}/>
           </div>
           <div className='bottomCard'>
-            <Lines/>
+            <Lines lineText={props.sectionFile}/>
           </div>
         </div>
       </div>
