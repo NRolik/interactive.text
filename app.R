@@ -3,7 +3,7 @@ library(interactive.text)
 
 ui <- div(
   # titlePanel("reactR HTMLWidget Example"),
-  DragAndDrop(textFile = "test\n test\n test\n" , codeFile = 'Default codes, test,', sectionFile = 'Section file content')
+  DragAndDrop(textFile = "test\n test\n test1\n" , codeFile = 'Default codes, test,', sectionFile = 'Section file content')
   # DragAndDrop()
 )
 
