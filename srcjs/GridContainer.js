@@ -20,7 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function FullWidthGrid(props) {
+function FullWidthGrid(props, setValue) {
   const [wholeText, setWholeText] = useState('');
 
   console.log('Code File Body:' + props.codeFile)
@@ -28,7 +28,7 @@ function FullWidthGrid(props) {
   console.log('Text File Body : ' + props.textFile)
 
   function saveData(){
-    console.log(wholeText);
+    setValue(props.fileName,wholeText)
   }
 
 
