@@ -14,7 +14,8 @@ DragAndDrop <- function(..., textFile = NULL, codeFile = NULL, sectionFile = NUL
                                                           textFile    = textFile,
                                                           codeFile    = codeFile,
                                                           sectionFile = sectionFile
-                                                          )
+                                                          ),
+
                                                      )
                                    )
 
