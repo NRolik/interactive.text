@@ -6,6 +6,7 @@
 \usage{
 DragAndDrop(
   ...,
+  fileName = NULL,
   textFile = NULL,
   codeFile = NULL,
   sectionFile = NULL,
