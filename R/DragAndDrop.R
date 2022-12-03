@@ -5,12 +5,13 @@
 #' @import htmlwidgets
 #'
 #' @export
-DragAndDrop <- function(..., textFile = NULL, codeFile = NULL, sectionFile = NULL,  width = '100%', height = '100%', elementId = NULL) {
+DragAndDrop <- function(..., fileName = NULL, textFile = NULL, codeFile = NULL, sectionFile = NULL,  width = '100%', height = '100%', elementId = NULL) {
 
   # describe a React component to send to the browser for rendering.
   # component <- reactR::reactMarkup(htmltools::tag("div", list(message)))
   component <- reactR::reactMarkup(reactR::component("DragAndDropCustom",
                                                      list(...,
+                                                          fileName = fileName,
                                                           textFile    = textFile,
                                                           codeFile    = codeFile,
                                                           sectionFile = sectionFile
