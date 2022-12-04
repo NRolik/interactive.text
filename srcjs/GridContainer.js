@@ -21,12 +21,17 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function FullWidthGrid(props) {
+  const [loading,setLoading] = useState(true);
   const [wholeText, setWholeText] = useState('');
 
   console.log("Started New File")
 
 
   useEffect(() => {
+    if(loading){
+      localStorage.clear();
+      setLoading(false)
+    }
     const handleTabClose = event => {
 
       console.log('beforeunload event triggered');

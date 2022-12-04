@@ -50554,12 +50554,20 @@ var Item = Object(_mui_material_styles__WEBPACK_IMPORTED_MODULE_1__["styled"])(_
   });
 });
 function FullWidthGrid(props) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
     _useState2 = _slicedToArray(_useState, 2),
-    wholeText = _useState2[0],
-    setWholeText = _useState2[1];
+    loading = _useState2[0],
+    setLoading = _useState2[1];
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+    _useState4 = _slicedToArray(_useState3, 2),
+    wholeText = _useState4[0],
+    setWholeText = _useState4[1];
   console.log("Started New File");
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (loading) {
+      localStorage.clear();
+      setLoading(false);
+    }
     var handleTabClose = function handleTabClose(event) {
       console.log('beforeunload event triggered');
       localStorage.clear();
