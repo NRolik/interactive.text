@@ -10,7 +10,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Lines } from "./Lines.jsx";
 import {SaveButton} from "./SaveButton.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -20,15 +20,46 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function FullWidthGrid(props, setValue) {
+function FullWidthGrid(props) {
   const [wholeText, setWholeText] = useState('');
 
-  console.log('Code File Body:' + props.codeFile)
-  console.log('Section File Body:' + props.sectionFile)
-  console.log('Text File Body : ' + props.textFile)
+  console.log("Started New File")
 
-  function saveData(){
-    setValue(props.fileName,wholeText)
+
+  useEffect(() => {
+    const handleTabClose = event => {
+
+      console.log('beforeunload event triggered');
+      localStorage.clear();
+
+      // return true;
+      // return (event.returnValue = 'Are you sure you want to exit?');
+    };
+
+    window.addEventListener('beforeunload', handleTabClose);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleTabClose);
+    };
+  }, []);
+
+  function saveData() {
+    let previous = localStorage.getItem("data");
+
+    if (!previous) {
+      previous = [];
+    } else {
+      previous = JSON.parse(previous);
+    }
+
+    previous.push({
+      file: props.fileName,
+      content: wholeText,
+    });
+
+    // console.log(result);
+    localStorage.setItem('040', JSON.stringify(previous));
+    console.log("Updated Local");
   }
 
 

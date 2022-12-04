@@ -50553,16 +50553,41 @@ var Item = Object(_mui_material_styles__WEBPACK_IMPORTED_MODULE_1__["styled"])(_
     color: theme.palette.text.secondary
   });
 });
-function FullWidthGrid(props, setValue) {
+function FullWidthGrid(props) {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
     _useState2 = _slicedToArray(_useState, 2),
     wholeText = _useState2[0],
     setWholeText = _useState2[1];
-  console.log('Code File Body:' + props.codeFile);
-  console.log('Section File Body:' + props.sectionFile);
-  console.log('Text File Body : ' + props.textFile);
+  console.log("Started New File");
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    var handleTabClose = function handleTabClose(event) {
+      console.log('beforeunload event triggered');
+      localStorage.clear();
+
+      // return true;
+      // return (event.returnValue = 'Are you sure you want to exit?');
+    };
+
+    window.addEventListener('beforeunload', handleTabClose);
+    return function () {
+      window.removeEventListener('beforeunload', handleTabClose);
+    };
+  }, []);
   function saveData() {
-    setValue(props.fileName, wholeText);
+    var previous = localStorage.getItem("data");
+    if (!previous) {
+      previous = [];
+    } else {
+      previous = JSON.parse(previous);
+    }
+    previous.push({
+      file: props.fileName,
+      content: wholeText
+    });
+
+    // console.log(result);
+    localStorage.setItem('040', JSON.stringify(previous));
+    console.log("Updated Local");
   }
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](react_dnd__WEBPACK_IMPORTED_MODULE_6__["DndProvider"], {
     backend: react_dnd_html5_backend__WEBPACK_IMPORTED_MODULE_7__["HTML5Backend"]
