@@ -50574,14 +50574,14 @@ function FullWidthGrid(props) {
     };
   }, []);
   function saveData() {
-    var previous = localStorage.getItem("data");
+    var previous = localStorage.getItem("040");
     if (!previous) {
       previous = [];
     } else {
       previous = JSON.parse(previous);
     }
     previous.push({
-      file: props.fileName,
+      fileName: props.fileName,
       content: wholeText
     });
 

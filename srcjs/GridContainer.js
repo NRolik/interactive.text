@@ -44,7 +44,7 @@ function FullWidthGrid(props) {
   }, []);
 
   function saveData() {
-    let previous = localStorage.getItem("data");
+    let previous = localStorage.getItem("040");
 
     if (!previous) {
       previous = [];
@@ -53,7 +53,7 @@ function FullWidthGrid(props) {
     }
 
     previous.push({
-      file: props.fileName,
+      fileName: props.fileName,
       content: wholeText,
     });
 
