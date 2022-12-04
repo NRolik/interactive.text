@@ -79,7 +79,7 @@ function FullWidthGrid(props) {
             <Lines lineText={props.sectionFile}/>
           </div>
           <div className='bottomCard'>
-            <SaveButton saveData={saveData}/>
+            <SaveButton id="save_data_button" saveData={saveData}/>
           </div>
         </div>
       </div>
