@@ -7,7 +7,7 @@ const style = {
     backgroundColor: 'white',
     padding: '0.5rem 0.5rem',
     // marginRight: '1rem',
-    marginBottom: '1.5rem',
+    marginBottom: '0.25rem',
     cursor: 'move',
     textAlign:'center'
     // float: 'left',
