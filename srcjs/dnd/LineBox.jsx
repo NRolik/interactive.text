@@ -6,8 +6,9 @@ const style = {
     border: '1px dashed gray',
     backgroundColor: 'white',
     padding: '0.5rem 0.5rem',
+    marginTop:"0.5rem",
     // marginRight: '1rem',
-    marginBottom: '1.5rem',
+    marginBottom: '0.5rem',
     cursor: 'move',
     textAlign:'center'
     // float: 'left',
