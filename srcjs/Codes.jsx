@@ -2,8 +2,10 @@ import {useEffect, useState} from "react";
 import {CodeBox} from "./dnd/CodeBox.jsx";
 import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
+
 import IosShareIcon from "@mui/icons-material/IosShare";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
+import {Button} from "@mui/material";
 
 export function Codes({codeText}) {
     const [loading, setIsLoading] = useState(true);
@@ -60,9 +62,28 @@ export function Codes({codeText}) {
                     onChange={(e) => {
                         setCodeValue(e.target.value);
                     }}
+                    onKeyDown={(e)=>{
+                        if (e.key === 'Enter') {
+                            let temp = codes;
+                            let notFound = true;
+
+                            for (let i = 0; i < temp.length; i++) {
+                                if (temp[i] === codeValue) {
+                                    notFound = false;
+                                }
+                            }
+
+                            if (notFound) {
+                                temp.push(codeValue);
+                                setCodes(temp);
+                                generateCodes();
+                            }
+                        }
+                    }}
                 />
 
-                <IconButton
+                <Button
+                    variant="outlined"
                     onClick={() => {
                         let temp = codes;
                         let notFound = true;
@@ -81,12 +102,13 @@ export function Codes({codeText}) {
                     }}
                     aria-label="delete"
                 >
-                    <IosShareIcon/>
-                </IconButton>
+                    Add a code
+                    {/*<IosShareIcon/>*/}
+                </Button>
             </ThemeProvider>
 
 
-            <div style={{overflow: "hidden", clear: "both"}}>{codeElements}</div>
+            <div style={{overflow: "hidden", clear: "both", display:"block"}}>{codeElements}</div>
         </>
     );
 }

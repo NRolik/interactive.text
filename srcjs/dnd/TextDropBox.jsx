@@ -2,8 +2,8 @@ import {useDrop} from 'react-dnd'
 import {ItemTypes} from './ItemTypes.jsx'
 import {useState} from "react";
 import {CodeButton} from "./CodeButton.jsx";
+import {LineButton} from "./LineButton.jsx";
 
-const style = {}
 
 export const TextDropBox = ({id, text, updateText}) => {
     const [codeElements, setCodeElements] = useState([]);
@@ -31,7 +31,7 @@ export const TextDropBox = ({id, text, updateText}) => {
                     let temp = lineElement;
 
                     temp.push(
-                        <CodeButton key={item.name} id={item.name}/>
+                        <LineButton key={item.name} id={item.name}/>
                     );
 
                     setLineElement(temp);
@@ -49,7 +49,7 @@ export const TextDropBox = ({id, text, updateText}) => {
         }
         let allLines = "";
         for (let i = 0; i < lineElement.length; i++) {
-            allLines = allLines + "\n" +lineElement[i].key;
+            allLines = allLines + "\n" + lineElement[i].key;
         }
 
         let joinedText;
@@ -59,7 +59,7 @@ export const TextDropBox = ({id, text, updateText}) => {
             joinedText = text + allCodes + allLines;
         }
 
-        updateText(id,joinedText)
+        updateText(id, joinedText)
     }
 
     return (
@@ -70,7 +70,9 @@ export const TextDropBox = ({id, text, updateText}) => {
                     {codeElements.map(element => element)}
                 </div>
             </div>
-            {lineElement.map(element => element)}
+            <div style={{display: "block"}}>
+                {lineElement.map(element => element)}
+            </div>
         </>
     )
 }
