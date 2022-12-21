@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-export function CodeButton({id}) {
+export function CodeButton({id,disableId,disableButton}) {
     const [show, setShow] = useState(true);
 
     return <button
@@ -8,6 +8,7 @@ export function CodeButton({id}) {
         hidden={!show}
         onClick={() => {
             setShow(false)
+            disableButton(disableId);
         }}
     >{id}</button>
 }

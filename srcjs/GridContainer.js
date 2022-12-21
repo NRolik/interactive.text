@@ -62,7 +62,7 @@ function FullWidthGrid(props) {
       content: wholeText,
     });
 
-    // console.log(result);
+    console.log(wholeText);
     localStorage.setItem('040', JSON.stringify(previous));
     console.log("Updated Local");
   }

@@ -1,13 +1,15 @@
 import {useState} from "react";
 
-export function LineButton({id}) {
+export function LineButton({id,disableId,disableButton}) {
     const [visible, setVisible] = useState(true);
-    const styleView = visible ? "visible" : "hidden"
+    const display = visible ? "block" : "none";
+    if(!visible){
+        id="";
+    }
 
     const style = {
-        display: "block",
+        display,
         cursor: "pointer",
-        visibility: styleView
     }
 
     return <button
@@ -15,6 +17,7 @@ export function LineButton({id}) {
         style={style}
         onClick={() => {
             setVisible(false)
+            disableButton(disableId);
         }}
     >{id}</button>
 }

@@ -8,6 +8,7 @@ import {LineButton} from "./LineButton.jsx";
 export const TextDropBox = ({id, text, updateText}) => {
     const [codeElements, setCodeElements] = useState([]);
     const [lineElement, setLineElement] = useState([]);
+    const [disabledButtons, setDisabledButtons] = useState(new Map());
 
 
     const [, drop] = useDrop(() => ({
@@ -21,7 +22,10 @@ export const TextDropBox = ({id, text, updateText}) => {
 
                     temp.push(
                         <CodeButton key={item.name}
-                                    id={item.name}/>
+                                    id={item.name}
+                                    disableId={item.name + temp.length}
+                                    disableButton={disableButton}
+                        />
                     );
 
                     setCodeElements(temp);
@@ -31,7 +35,11 @@ export const TextDropBox = ({id, text, updateText}) => {
                     let temp = lineElement;
 
                     temp.push(
-                        <LineButton key={item.name} id={item.name}/>
+                        <LineButton key={item.name}
+                                    id={item.name}
+                                    disableId={item.name + temp.length}
+                                    disableButton={disableButton}
+                        />
                     );
 
                     setLineElement(temp);
@@ -41,15 +49,23 @@ export const TextDropBox = ({id, text, updateText}) => {
         }
     ))
 
+    function disableButton(disableId) {
+        disabledButtons.set(disableId, true);
+        setDisabledButtons(disabledButtons);
+        newText();
+    }
+
 
     function newText() {
         let allCodes = " ";
         for (let i = 0; i < codeElements.length; i++) {
-            allCodes = allCodes + codeElements[i].key + " ";
+            if (!disabledButtons.has(codeElements[i].props.disableId))
+                allCodes = allCodes + codeElements[i].key + " ";
         }
         let allLines = "";
         for (let i = 0; i < lineElement.length; i++) {
-            allLines = allLines + "\n" + lineElement[i].key;
+            if (!disabledButtons.has(lineElement[i].props.disableId))
+                allLines = allLines + "\n" + lineElement[i].key;
         }
 
         let joinedText;
