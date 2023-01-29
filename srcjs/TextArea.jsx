@@ -1,22 +1,22 @@
-import {TextDropBox} from "./dnd/TextDropBox.jsx";
-import {useEffect, useState} from "react";
+import { TextDropBox } from "./dnd/TextDropBox.jsx";
+import { useEffect, useState } from "react";
 
-export function TextArea({text,setWholeText}) {
+export function TextArea({ text, setWholeText }) {
     const [line, setLine] = useState(new Map());
     const [loading, setLoading] = useState(true);
 
     let splitedText = text.split("\n");
 
-    function buildText(){
+    function buildText() {
         let text = '';
-        for(let i = 0; i < splitedText.length;i++){
-            text = text +line.get(splitedText[i]) + "\n";
+        for (let i = 0; i < splitedText.length; i++) {
+            text = text + line.get(splitedText[i]) + "\n";
         }
         setWholeText(text);
     }
 
     useEffect(() => {
-        if(loading) {
+        if (loading) {
             let temp = line;
             for (let i = 0; i < splitedText.length; i++) {
                 temp.set(splitedText[i], splitedText[i]);
@@ -35,14 +35,19 @@ export function TextArea({text,setWholeText}) {
     }
 
 
+    console.log(splitedText);
+
+
     return <div className={"left"}>
-        <TextDropBox id={0} text={<div>&nbsp;</div>} updateText={updateText}/>
-        { !loading ?
+        <TextDropBox id={0} text={<div>&nbsp;</div>} updateText={updateText} />
+        {!loading ?
             // splitedText.map(element => <div>{element}</div>)
             splitedText.map(
                 element => {
+                    console.log(element.trim());
                     return <>
-                        <TextDropBox id={element} text={element} updateText={updateText}/>
+                        {(element.trim()).length !== 0 ? <hr /> : null}
+                        <TextDropBox id={element} text={element} updateText={updateText} />
                     </>
                 }
             )
